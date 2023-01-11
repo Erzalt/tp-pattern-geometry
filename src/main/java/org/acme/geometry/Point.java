@@ -4,11 +4,17 @@ public class Point implements Geometry{
 
     private Coordinate coordinate;
 
-    public Point(){};
+    public Point(){
+        this.coordinate = new Coordinate();
+    };
 
 
     public Point(Coordinate coordinate) {
-        this.coordinate = coordinate;
+        if(coordinate == null){
+            this.coordinate = new Coordinate();
+        }
+        else{
+            this.coordinate = coordinate;}
     }
 
     public Coordinate getCoordinate() {
@@ -18,5 +24,18 @@ public class Point implements Geometry{
     @Override
     public String getType() {
         return null;
+    }
+
+    @Override
+    public Boolean isEmpty() {
+        if(this.coordinate.isEmpty()){
+            return true;}
+        else{return false;}
+    }
+
+    @Override
+    public void translate(double dx, double dy) {
+        this.coordinate.setX(this.coordinate.getX() + dx);
+        this.coordinate.setY(this.coordinate.getY() + dy);
     }
 }
