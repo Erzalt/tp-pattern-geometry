@@ -31,7 +31,6 @@ public class WktWriterTest extends TestCase {
         Assert.assertEquals("LINESTRING (0.0 0.1, 0.2 0.3)", writer.write(ls));
 
         Geometry ls2 = new LineString();
-
         Assert.assertEquals("LINESTRING EMPTY", writer.write(ls2));
 
     }

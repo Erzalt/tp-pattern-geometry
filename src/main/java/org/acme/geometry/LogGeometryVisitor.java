@@ -31,7 +31,4 @@ public class LogGeometryVisitor implements GeometryVisitor {
         builder.append(" point(s)");
         this.out.println(builder.toString());
     }
-
-
-
 }
