@@ -14,4 +14,6 @@ public interface Geometry {
 
     public void accept(GeometryVisitor geometryVisitor);
 
+    public String asText();
+
 }

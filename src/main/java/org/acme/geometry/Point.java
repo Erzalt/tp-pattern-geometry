@@ -1,7 +1,4 @@
 package org.acme.geometry;
-
-import java.beans.Encoder;
-
 public class Point extends AbstractGeometry {
 
     private Coordinate coordinate;

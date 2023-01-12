@@ -10,4 +10,6 @@ public abstract class AbstractGeometry implements Geometry{
     public Geometry clone() {
         return null;
     }
+
+    public Envelope getEnvelop() {return null;}
 }
