@@ -23,7 +23,7 @@ public class Point implements Geometry{
 
     @Override
     public String getType() {
-        return null;
+        return "Point";
     }
 
     @Override
@@ -37,5 +37,12 @@ public class Point implements Geometry{
     public void translate(double dx, double dy) {
         this.coordinate.setX(this.coordinate.getX() + dx);
         this.coordinate.setY(this.coordinate.getY() + dy);
+    }
+
+    @Override
+    public Point clone() {
+        Coordinate co = new Coordinate(this.coordinate.getX(), this.coordinate.getY());
+        Point newClone = new Point(co);
+        return newClone ;
     }
 }

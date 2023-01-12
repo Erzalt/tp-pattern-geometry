@@ -1,5 +1,6 @@
 package org.acme.geometry;
 
+import javax.sound.sampled.Line;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class LineString implements Geometry{
     }
     @Override
     public String getType() {
-        return null;
+        return "LineString";
     }
 
     @Override
@@ -49,4 +50,15 @@ public class LineString implements Geometry{
             point.translate(dx,dy);
             }
         }
+
+    @Override
+    public LineString clone() {
+
+        List<Point> cloneArray = new ArrayList<>();
+        for (Point point : points){
+            cloneArray.add(point.clone());
+        }
+        LineString newClone = new LineString(cloneArray);
+        return newClone;
+    }
 }

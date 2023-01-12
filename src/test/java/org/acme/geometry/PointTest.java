@@ -12,15 +12,18 @@ public class PointTest {
         // Test 0.2
         Coordinate c = new Coordinate(0.0,0.0);
         Point p = new Point(c);
-        Assert.assertEquals(0.0, p.getCoordinate().getX(), EPSILON);
-        Assert.assertEquals(0.0, p.getCoordinate().getY(), EPSILON);
+        Assert.assertSame( c, p.getCoordinate());
     }
+
 
     @Test
     public void testIsEmptyPoint(){
         // Test 0.3
         Point p = new Point();
+        Point p2 = new Point(new Coordinate(0.2,0.3));
         Assert.assertTrue(p.isEmpty());
+        Assert.assertFalse(p2.isEmpty());
+
     }
 
     @Test
@@ -32,4 +35,23 @@ public class PointTest {
         Assert.assertEquals(0.6, p.getCoordinate().getY(), EPSILON);
     }
 
+    @Test
+    public void testGetType() {
+        Geometry p = new Point();
+        Assert.assertEquals("Point", p.getType());
+    }
+
+    @Test
+    public void testTestClone() {
+
+        Point p = new Point(new Coordinate(0.2, 0.3));
+        Point p2 = p.clone();
+
+        Assert.assertEquals(p.getCoordinate().getX(), p2.getCoordinate().getX(),EPSILON);
+        Assert.assertNotSame(p,p2);
+
+        p2.translate(0.2,0.8);
+        Assert.assertNotEquals(p.getCoordinate(), p2.getCoordinate());
+
+    }
 }
