@@ -11,4 +11,7 @@ public interface Geometry {
     public Geometry clone();
 
     public Envelope getEnvelop();
+
+    public void accept(GeometryVisitor geometryVisitor);
+
 }

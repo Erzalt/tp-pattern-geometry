@@ -73,4 +73,9 @@ public class LineString implements Geometry{
         return envLine;
 
     }
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
+    }
+
 }

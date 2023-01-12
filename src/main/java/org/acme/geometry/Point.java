@@ -2,21 +2,23 @@ package org.acme.geometry;
 
 import java.beans.Encoder;
 
-public class Point implements Geometry{
+public class Point implements Geometry {
 
     private Coordinate coordinate;
 
-    public Point(){
+    public Point() {
         this.coordinate = new Coordinate();
-    };
+    }
+
+    ;
 
 
     public Point(Coordinate coordinate) {
-        if(coordinate == null){
+        if (coordinate == null) {
             this.coordinate = new Coordinate();
+        } else {
+            this.coordinate = coordinate;
         }
-        else{
-            this.coordinate = coordinate;}
     }
 
     public Coordinate getCoordinate() {
@@ -30,9 +32,11 @@ public class Point implements Geometry{
 
     @Override
     public Boolean isEmpty() {
-        if(this.coordinate.isEmpty()){
-            return true;}
-        else{return false;}
+        if (this.coordinate.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -45,7 +49,7 @@ public class Point implements Geometry{
     public Point clone() {
         Coordinate co = new Coordinate(this.coordinate.getX(), this.coordinate.getY());
         Point newClone = new Point(co);
-        return newClone ;
+        return newClone;
     }
 
     @Override
@@ -54,5 +58,10 @@ public class Point implements Geometry{
         envPointBuilder.insert(coordinate);
         Envelope envPoint = envPointBuilder.build();
         return envPoint;
+    }
+
+    @Override
+    public void accept(GeometryVisitor visitor) {
+        visitor.visit(this);
     }
 }
