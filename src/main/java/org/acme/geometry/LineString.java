@@ -4,7 +4,7 @@ import javax.sound.sampled.Line;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LineString implements Geometry{
+public class LineString extends AbstractGeometry {
 
     private List<Point> points;
 
@@ -76,6 +76,13 @@ public class LineString implements Geometry{
     @Override
     public void accept(GeometryVisitor visitor) {
         visitor.visit(this);
+    }
+
+    public String asText() {
+        WktVisitor visitor = new WktVisitor();
+        Geometry geometry = new LineString(this.points);
+        geometry.accept(visitor);
+        return visitor.getResult();
     }
 
 }

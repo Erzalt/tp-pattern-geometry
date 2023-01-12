@@ -93,7 +93,17 @@ public class LineStringTest {
         Assert.assertEquals(ls.getEnvelop().bottomLeft.getY(), 0.1,EPSILON);
         Assert.assertEquals(ls.getEnvelop().topRight.getX(), 0.4,EPSILON);
         Assert.assertEquals(ls.getEnvelop().topRight.getY(), 0.5,EPSILON);
+    }
 
+    @Test
+    public void testAsText() {
 
+        Point p1 = new Point(new Coordinate(0.0, 0.1));
+        Point p2 = new Point(new Coordinate(0.2, 0.3));
+        List<Point> lsPoint = new ArrayList<>();
+        lsPoint.add(p1);
+        lsPoint.add(p2);
+        LineString ls = new LineString(lsPoint);
+        Assert.assertEquals("LINESTRING (0.0 0.1, 0.2 0.3)", ls.asText());
     }
 }

@@ -2,16 +2,13 @@ package org.acme.geometry;
 
 import java.beans.Encoder;
 
-public class Point implements Geometry {
+public class Point extends AbstractGeometry {
 
     private Coordinate coordinate;
 
     public Point() {
         this.coordinate = new Coordinate();
     }
-
-    ;
-
 
     public Point(Coordinate coordinate) {
         if (coordinate == null) {
@@ -63,5 +60,12 @@ public class Point implements Geometry {
     @Override
     public void accept(GeometryVisitor visitor) {
         visitor.visit(this);
+    }
+
+    public String asText(){
+        WktVisitor visitor = new WktVisitor();
+        Geometry geometry = new Point(this.coordinate);
+        geometry.accept(visitor);
+        return visitor.getResult();
     }
 }
