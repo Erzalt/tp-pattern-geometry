@@ -54,4 +54,12 @@ public class PointTest {
         Assert.assertNotEquals(p.getCoordinate(), p2.getCoordinate());
 
     }
+    @Test
+    public void testGetEnvelop() {
+        Point p = new Point(new Coordinate(0.2, 0.3));
+        Assert.assertEquals(p.getEnvelop().bottomLeft.getX(), 0.2,EPSILON);
+        Assert.assertEquals(p.getEnvelop().bottomLeft.getY(), 0.3,EPSILON);
+        Assert.assertEquals(p.getEnvelop().topRight.getX(), 0.2,EPSILON);
+        Assert.assertEquals(p.getEnvelop().topRight.getY(), 0.3,EPSILON);
+    }
 }

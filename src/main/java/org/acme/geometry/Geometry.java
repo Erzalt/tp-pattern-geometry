@@ -10,4 +10,5 @@ public interface Geometry {
 
     public Geometry clone();
 
+    public Envelope getEnvelop();
 }

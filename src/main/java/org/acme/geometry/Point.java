@@ -1,5 +1,7 @@
 package org.acme.geometry;
 
+import java.beans.Encoder;
+
 public class Point implements Geometry{
 
     private Coordinate coordinate;
@@ -44,5 +46,13 @@ public class Point implements Geometry{
         Coordinate co = new Coordinate(this.coordinate.getX(), this.coordinate.getY());
         Point newClone = new Point(co);
         return newClone ;
+    }
+
+    @Override
+    public Envelope getEnvelop() {
+        EnvelopeBuilder envPointBuilder = new EnvelopeBuilder();
+        envPointBuilder.insert(coordinate);
+        Envelope envPoint = envPointBuilder.build();
+        return envPoint;
     }
 }

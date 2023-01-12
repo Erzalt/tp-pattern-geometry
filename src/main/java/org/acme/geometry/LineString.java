@@ -15,7 +15,6 @@ public class LineString implements Geometry{
     public LineString(List<Point> points) {
         if(points == null){
             this.points = new ArrayList<Point>();}
-
         else{
             this.points = points;}
     }
@@ -60,5 +59,18 @@ public class LineString implements Geometry{
         }
         LineString newClone = new LineString(cloneArray);
         return newClone;
+    }
+
+    @Override
+    public Envelope getEnvelop() {
+        EnvelopeBuilder envLineBuilder = new EnvelopeBuilder();
+
+        for (Point point : points){
+            envLineBuilder.insert(point.getCoordinate());
+        }
+
+        Envelope envLine = envLineBuilder.build();
+        return envLine;
+
     }
 }
